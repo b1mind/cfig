@@ -1,0 +1,225 @@
+[
+  {
+    "key": "ctrl+r",
+    "command": "editor.action.rename",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  /* {
+		"key": "ctrl+;",
+		"command": "workbench.action.lastEditorInGroup",
+		"when": "breadcrumbs.focus"
+	}, */
+  {
+    "key": "ctrl+;",
+    "command": "breadcrumbs.focusAndSelect",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "breadcrumbs.focus",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "-breadcrumbs.focusAndSelect",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+shift+;",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+shift+;",
+    "command": "-breadcrumbs.focus",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+'",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "end",
+    "command": "-cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "settings.cycle.lineNumber",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  /* 	{
+    "key": "ctrl+shift+z",
+		"command": "workbench.view.extension.todo"
+    }, */
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "shift+escape",
+    "command": "notifications.clearAll"
+  },
+
+  //< sideBar focus
+  // stashed
+  // workbench.action.files.openLocalFolder, workbench.action.nextSideBarView, workbench.action.nextPanelView
+  {
+    "key": "ctrl+p",
+    "command": "git.push",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "u",
+    "command": "git.unstage",
+    "when": "listFocus && activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "s",
+    "command": "git.stage",
+    "when": "listFocus && activeViewlet == 'workbench.view.scm'"
+  },
+
+  //< terminal only
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus || panelFocus"
+  },
+  /* 	{
+		"key": "ctrl+alt+k",
+		"command": "workbench.action.toggleMinimisedPanel",
+		"when": "terminalFocus"
+	}, */
+  // {
+  // 	"key": "ctrl+alt+l",
+  // 	"command": "workbench.action.terminal.split",
+  // 	"when": "terminalFocus"
+  // },
+  {
+    "key": "ctrl+alt+l",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+h",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "workbench.action.terminal.scrollDown",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "workbench.action.terminal.scrollUp",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+;",
+    "command": "openInTerminal",
+    "when": "filesExplorerFocus"
+  },
+
+  //> VIM keybinds
+  // more in settings.json under vim.settings
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+
+  {
+    "key": ";",
+    "command": "removeSecondaryCursors",
+    "when": "editorHasMultipleSelections && vim.mode != 'Visual'"
+  },
+
+  //fixme paste ? need to clear then map in vim settngs?
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+    // "when": "editorTextFocus"
+  },
+  // {
+  // 	"key": "ctrl+p",
+  // 	"command": "i",
+  // 	"when": "vim.mode == 'Insert' && editorFocus"
+  // },
+  // {
+  // 	"key": "shift+;",
+  // 	"command": "vim.showQuickpickCmdLine",
+  // 	"when": "inZenMode && vim.mode != 'Insert'"
+  // },
+  {
+    "key": "ctrl+alt+l",
+    "command": "workbench.action.moveEditorToNextGroup",
+    "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+alt+h",
+    "command": "workbench.action.moveEditorToPreviousGroup",
+    "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown",
+    "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp",
+    "when": "vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "vim.mode != 'Insert' && !terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "vim.mode != 'Insert' && !terminalFocus && !sideBarFocus"
+  },
+  {
+    "key": "l",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "right",
+    "command": "-breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "h",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "left",
+    "command": "-breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  }
+]

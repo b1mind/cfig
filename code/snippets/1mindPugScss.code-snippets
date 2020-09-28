@@ -1,0 +1,63 @@
+{
+	//> pug
+	"Pug Init": {
+		"scope": "pug, jade",
+		"prefix": "!pug",
+		"body": [
+			"<!DOCTYPE html>",
+			"html(lang=\"en\")",
+			"  head",
+			"    meta(charset=\"UTF-8\")",
+			"    meta(name=\"viewport\", content=\"width=device-width, initial-scale=1.0\")",
+			"    link(rel=\"shortcut icon\", href=\"favicon.ico\", type=\"image/x-icon\")",
+			"    link(rel=\"stylesheet\", href=\"${1:css/styles}.css\")",
+			"    link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css', rel='stylesheet', type='text/css')",
+			"    script(defer src=\"https://use.fontawesome.com/991e61a5a1.js\")",
+			"    script(defer src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js\")",
+			"    script(defer src=\"${2:js/app}.js\")",
+			"    title ${3:Just a Title}",
+			"",
+			"  body",
+			"    $0"
+		],
+		"description": "Pug Init"
+	},
+	"script: Gsap": {
+		"scope": "pug, jade",
+		"prefix": "scr:gsap",
+		"body": ["script(defer src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js\")"],
+		"description": "script Greensock"
+	},
+	//> SCSS
+	"Scss Init": {
+		"scope": "scss",
+		"prefix": "!scss",
+		"body": [
+			"//- //< Sassy settings",
+			"\\$minWidthLg: 1000px;",
+			"\\$minWidthMed: 800px;",
+			"\\$minWidthSml: 420px;",
+			"//- //>Base settings",
+			":root {",
+			"  --color: #fff;",
+			"  --color2: #000; ",
+			"}",
+			"",
+			"*, *::before, *::after { box-sizing: border-box; }",
+			"",
+			"html, body {",
+			"  height: 100%;",
+			"  min-height: 100%;",
+			"  margin: 0;",
+			"}",
+			"",
+			"a { text-decoration: none; }",
+			"",
+			"img { max-width: 100%; }",
+			"",
+			"$0"
+		],
+		"description": "Scss Init"
+	}
+	//> Both
+}

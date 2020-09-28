@@ -1,0 +1,12 @@
+{
+	"Picsum Random Img": {
+		"prefix": "jimg",
+		"body": ["\"https://picsum.photos/${1:800}/${2:600}?random=$0\""],
+		"description": "Random Img Url"
+	},
+	"PrettierIgnore": {
+		"prefix": "jpi",
+		"body": ["prettier-ignore"],
+		"description": "ignore damnit"
+	}
+}

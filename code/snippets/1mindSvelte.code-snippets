@@ -1,0 +1,26 @@
+{
+	// prettier-ignore
+	"Svelte Init": {
+		"prefix": "!svlt",
+		"body": [
+			"<script> ",
+			"$1",
+			"</script>",
+			"",
+			"<!-- prettier-ignore -->",
+			"<template lang=\"pug\">",
+			"  $0",
+			"</template>",
+			"<!-- end ignore -->",
+			"<style type=\"text/scss\">",
+			"$2",
+			"</style>"
+		],
+		"description": "Svelte Init"
+	},
+	"Discpatcher": {
+		"prefix": "jdis",
+		"body": ["import { createEventDispatcher } from 'svelte'", "let dispatch = createEventDispatcher()"],
+		"description": "Discpatcher"
+	}
+}
