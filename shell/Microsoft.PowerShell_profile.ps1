@@ -1,4 +1,4 @@
-# *** Must add this to default profile location to load this ***
+# *** Must add this to $profile load***
 # $fileContents = [string]::join([environment]::newline, (get-content -path ~/cfig/shell/Microsoft.PowerShell_profile.ps1))
 # invoke-expression $fileContents
 
@@ -15,17 +15,25 @@ Set-PSReadlineOption -EditMode vi -BellStyle None
 $date = Get-Date
 $time = Get-Date -Format "hh:mm tt"
 Write-Host "                                  ---------------- " 
-Write-Host "    __          _             _ " -foregroundColor Blue
-Write-Host "   /  |  /\/\  (_) _ __    __| |  Never Surrender " -foregroundColor Blue
-Write-Host "    | | /    \ | || '_ \  / _  |  $($date.ToLongDateString())" -foregroundColor Blue
-Write-Host "    | |/ /\/\ \| || | | || (_| |  $time" -foregroundColor Blue
-Write-Host "    |_|\/    \/|_||_| |_| \__,_|" -foregroundColor Blue
+Write-Host "    __ _   _    _             _ " -foregroundColor Blue
+Write-Host "   /  | \_/ \  (_) _ __    __| |  Never Surrender " -foregroundColor Blue
+Write-Host "    | |_   _ \ | || '_ \  / _  |  $($date.ToLongDateString())" -foregroundColor Blue
+Write-Host "    | | \_/ \ \| || | | || (_| |  $time" -foregroundColor Blue
+Write-Host "    |_|      \/|_||_| |_| \__,_|" -foregroundColor Blue
 Write-Host "                                  -------------------------"
 
 # >> Alias and Vars
-Function wsPath {Set-Location -Path D:\websites\}
+$vim = "C:\Program Files (x86)\Vim\vim82\vim.exe"
+Set-Alias -name v -value $vim
+
+$ws = "D:\websites\"
+$cf = "~\cfig\"
+Function wsPath {Set-Location -Path $ws}
 Set-Alias -name ws -value wsPath
-Function configPath {Set-Location -Path ~\cfig\}
+Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
+
+$vimrc = "~\cfig\_vimrc"
+$prof = "~\cfig\shell\Microsoft.PowerShell_profile.ps1"
 
 
