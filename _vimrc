@@ -17,6 +17,7 @@ set wildmenu
 set lazyredraw
 set incsearch
 set nohlsearch
+set hidden
 
 set nocompatible
 filetype off
@@ -35,21 +36,21 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 
-" -- Plugins! --
+" >> Plugins! --
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/ReplaceWithRegister'
 
+" visual plugs
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/gruvbox-material'
 Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
 
-" --Primeagen recommends--
-Plug 'tweekmonster/gofmt.vim'
+" Primeagen recommends--
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
@@ -62,7 +63,12 @@ Plug 'tpope/vim-dispatch'
 "  Plug 'theprimeagen/vim-be-good'
 call plug#end() 
 
-" --ThemeSetup--
+" >> qol settings
+let g:netrw_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+
+" >> ThemeSetup--
 let IsWindowsTerminal=exists("$WT_SESSION")
 let g:airline#extensions#tabline#enabled = 1
 colorscheme onedark
@@ -89,14 +95,15 @@ if IsWindowsTerminal
   autocmd VimLeave * silent !echo -ne "\e[6 q"
 endif
 
-" add abvreviations with :abbr
+" >> abbreviations
+" abbr soM something
 
-" -- Keymappings --
+" >> Keymappings
 imap ; <Esc>
 imap jk <Esc>
 let mapleader = " "
 
-" >> Basic Nav remaps
+" nav remaps
 nnoremap J }j
 nnoremap K {k
 nnoremap H B
@@ -107,20 +114,31 @@ nnoremap { 5j
 " nmap <silent><nowait><buffer>[ }
 " nmap <silent><nowait><buffer>] {
 
-" >>navigate panes
+" cause i know better
+nmap r gr
+nnoremap R r
+nnoremap U <C-r>
+" nnoremap <C-r> :replace all defName
+
+" navigate windows/buffers
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+nmap <C-o> <C-w>l
+nnoremap gt :bnext<CR>
+nnoremap gT :bprev<CR>
+nnoremap gd :GoDef<CR>
 
+" leader maps
 nnoremap <leader>' $
 nnoremap <leader>a ^
 nnoremap <leader>; $a;<Esc>
 nnoremap <leader>, $a,<Esc>
 nnoremap <leader>p "*p
 nnoremap <leader>o o<Esc>O
-nnoremap <leader>s :w<Return>
-nnoremap <leader>q :q<Return>
+nnoremap <leader>s :w<CR>
+nnoremap <leader>q :q<CR> 
 
 " Imitate goto symbol clear/insert
 nnoremap <leader>{ f{ci{
@@ -130,7 +148,11 @@ nnoremap <leader>) f)i
 nnoremap <leader>[ f[ci[
 nnoremap <leader>] f]i
 
-" --For reload on vimrc save
+" leader leader
+nnoremap <leader><leader>u :UndotreeShow<CR>
+nnoremap <leader><leader>e :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+" >> For reload on vimrc save
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
