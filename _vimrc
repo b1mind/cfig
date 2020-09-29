@@ -23,7 +23,7 @@ set nocompatible
 filetype off
 
 set showcmd
-" set guicursor=
+set guicursor=
 set hidden
 set noswapfile
 set nobackup
@@ -99,8 +99,8 @@ nnoremap J }j
 nnoremap K {k
 nnoremap H B
 nnoremap L W
-nnoremap } 5k
-nnoremap { 5j
+nnoremap } 9k
+nnoremap { 9j
 " ***needs buffer hack make search for next {[( and goto?
 " nmap <silent><nowait><buffer>[ }
 " nmap <silent><nowait><buffer>] {
