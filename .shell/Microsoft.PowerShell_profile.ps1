@@ -11,6 +11,8 @@ Import-Module oh-my-posh
 Set-Theme Star # Darkblood # Robbyrussell 
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
+$env:PATHEXT += ";.py"
+
 # >> Startup Logo
 $date = Get-Date
 $time = Get-Date -Format "hh:mm tt"
@@ -33,7 +35,9 @@ Set-Alias -name ws -value wsPath
 Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
 
-$vimrc = "~\cfig\_vimrc"
+$vrc = "~\cfig\_vimrc"
 $prof = "~\cfig\shell\Microsoft.PowerShell_profile.ps1"
 
-
+$ahkScript = "~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\capsEsacpeSwitch.ahk"
+$nostromo = "~\AppData\Roaming\Belkin\Nostromo\Profiles\*.*"
+$keysticks = "~\Documents\Keysticks\Profiles\*.*"
