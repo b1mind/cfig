@@ -23,7 +23,7 @@ set nocompatible
 filetype off
 
 set showcmd
-set guicursor=
+" set guicursor=
 set hidden
 set noswapfile
 set nobackup
@@ -69,7 +69,6 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 " >> ThemeSetup--
-let IsWindowsTerminal=exists("$WT_SESSION")
 let g:airline#extensions#tabline#enabled = 1
 colorscheme onedark
 set termguicolors
@@ -77,22 +76,13 @@ set background=dark
 set t_Co=256
 set t_ut=""
 
-if (&term =~ '^xterm' && &t_Co == 256)
-  set t_ut= | set ttyscroll=1
-endif
-
-" ***This is not working ?? ***
+let IsWindowsTerminal=exists("$WT_SESSION")
 if IsWindowsTerminal
-  " Fix certain mouse actions
-  set ttym=sgr
-  " Fix Cursor Shape
-  if &term =~ '^xterm'
-  " normal mode
-    let &t_EI .= "\<Esc>[0 q"
-  " insert mode
-    let &t_SI .= "\<Esc>[6 q"
-  endif
-  autocmd VimLeave * silent !echo -ne "\e[6 q"
+  let &t_SI="\<CSI>5\ q"
+  let &t_SR="\<CSI>7\ q"
+  let &t_EI="\<CSI>1\ q"
+
+  autocmd VimLeave * silent !echo -ne "\e[5 q"
 endif
 
 " >> abbreviations
@@ -100,6 +90,7 @@ endif
 
 " >> Keymappings
 imap ; <Esc>
+vmap ; <Esc>
 imap jk <Esc>
 let mapleader = " "
 
@@ -114,10 +105,14 @@ nnoremap { 5j
 " nmap <silent><nowait><buffer>[ }
 " nmap <silent><nowait><buffer>] {
 
-" cause i know better
+" cause i k;ow better
 nmap r gr
 nnoremap R r
+nnoremap S R
+nnoremap % ,
 nnoremap U <C-r>
+nmap <CR> o<Esc>
+
 " nnoremap <C-r> :replace all defName
 
 " navigate windows/buffers
@@ -128,7 +123,7 @@ nmap <C-l> <C-w>l
 nmap <C-o> <C-w>l
 nnoremap gt :bnext<CR>
 nnoremap gT :bprev<CR>
-nnoremap gd :GoDef<CR>
+" nnoremap gd :GoDef<CR>
 
 " leader maps
 nnoremap <leader>' $
