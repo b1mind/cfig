@@ -79,7 +79,7 @@ set t_ut=""
 let IsWindowsTerminal=exists("$WT_SESSION")
 if IsWindowsTerminal
   let &t_SI="\<CSI>5\ q"
-  let &t_SR="\<CSI>7\ q"
+  let &t_SR="\<CSI>6\ q"
   let &t_EI="\<CSI>1\ q"
 
   autocmd VimLeave * silent !echo -ne "\e[5 q"
@@ -105,17 +105,17 @@ nnoremap { 9j
 " nmap <silent><nowait><buffer>[ }
 " nmap <silent><nowait><buffer>] {
 
-" cause i k;ow better
+" < cause i k;ow better
 nmap r gr
 nnoremap R r
 nnoremap S R
-nnoremap % ,
+nnoremap , %
 nnoremap U <C-r>
+nnoremap Q @
 nmap <CR> o<Esc>
-
 " nnoremap <C-r> :replace all defName
 
-" navigate windows/buffers
+" < navigate windows/buffers
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -131,6 +131,11 @@ nnoremap <leader>a ^
 nnoremap <leader>; $a;<Esc>
 nnoremap <leader>, $a,<Esc>
 nnoremap <leader>p "*p
+nnoremap <leader>m M
+nnoremap <leader>j L
+nnoremap <leader>k H
+nnoremap <leader>f zz
+nnoremap <leader>J J
 nnoremap <leader>o o<Esc>O
 nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR> 
