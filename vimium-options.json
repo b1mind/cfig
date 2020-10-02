@@ -4,13 +4,17 @@
     {
       "pattern": "https?://mail.google.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://localhost:3000/*",
+      "passKeys": "hjkr"
     }
   ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nunmap <c-e>\nunmap <c-y>\nunmap [[\nunmap ]]\n\nmap J scrollPageDown\nmap K scrollPageUp\nmap [ goPrevious\nmap ] goNext\nmap F LinkHints.activateModeWithQueue\nmap <a-f> LinkHints.activateModeToOpenInNewForegroundTab\nmap , previousTab\nmap . nextTab",
-  "linkHintCharacters": "fdjk",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap <c-e>\nunmap <c-y>\nunmap [[\nunmap ]]\n\nmap J scrollPageDown\nmap K scrollPageUp\nmap [ goPrevious\nmap ] goNext\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap , visitPreviousTab\nmap . nextTab",
+  "linkHintCharacters": "fdsajklgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
@@ -20,7 +24,7 @@
   "scrollStepSize": 60,
   "smoothScroll": true,
   "grabBackFocus": true,
-  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\nmdn: https://developer.mozilla.org/en-US/search?q=%s MDN\n\n# g: https://www.google.com/search?q=%s Google\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\nd: https://duckduckgo.com/?q=%s DuckDuckGo\naz: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\nmdn: https://developer.mozilla.org/en-US/search?q=%s MDN\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\nd: https://duckduckgo.com/?q=%s DuckDuckGo\naz: https://www.amazon.com/s/?field-keywords=%s Amazon\n\n# g: https://www.google.com/search?q=%s Google\n# qw: https://www.qwant.com/?q=%s Qwant",
   "searchUrl": "https://www.google.com/search?q=",
   "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nmargin: -15px 0 0 -15px;\npadding: 3px 3px;\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282c34),\n  color-stop(100%, #4a5261));\nborder: 1px solid white;\nborder-radius: 0 0 10px 0;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\n\ncolor: #99ff80;\nfont-weight: 500;\nfont-size: 11px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
 }
