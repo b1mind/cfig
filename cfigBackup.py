@@ -7,18 +7,22 @@ files =  [
     "basePath": "/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
     "cfigPath": "/cfig/.shell/settings.json",
   },
+
   {
     "basePath": "/Documents/PowerShell/Microsoft.PowerShell_profile.ps1",
     "cfigPath": "/cfig/.shell/Microsoft.PowerShell_profile.ps1",
   },
+
   {
     "basePath": "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/capsEscapeSwitch.ahk",
     "cfigPath": "/cfig/AutoHotKey/capsEscapeSwitch.ahk",
   },
+
   { 
     "basePath": "/AppData/Roaming/Belkin/Nostromo/",
     "cfigPath": "/cfig/Nostromo/"
   },
+
   { 
     "basePath": "/Documents/AntiMicro/",
     "cfigPath": "/cfig/AntiMicro/"
