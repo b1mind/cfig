@@ -4,33 +4,32 @@ set encoding=UTF-8
 " -- Keep Settings --
 set relativenumber
 set belloff=all
-set tabstop=2 softtabstop=2
+set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set nu rnu
+set nu
 set nowrap
 set smartcase
 set showmatch
 set splitbelow splitright
 set wildmenu
-set lazyredraw
 set incsearch
 set nohlsearch
 set hidden
+set cursorline
 
 set nocompatible
 filetype off
 
 set showcmd
-set guicursor=
-set hidden
 set noswapfile
+set noshowmode
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set scrolloff=8
-set noshowmode
 " set completeopt=menuone,noinsert,noselect
 set cmdheight=2
 set updatetime=50
@@ -74,16 +73,10 @@ colorscheme onedark
 set termguicolors
 set background=dark
 set t_Co=256
-set t_ut=""
-
-let IsWindowsTerminal=exists("$WT_SESSION")
-if IsWindowsTerminal
-  let &t_SI="\<CSI>5\ q"
-  let &t_SR="\<CSI>6\ q"
-  let &t_EI="\<CSI>1\ q"
-
-  autocmd VimLeave * silent !echo -ne "\e[5 q"
-endif
+" cursor
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait275-blinkoff120-blinkon175,
 
 " >> abbreviations
 " abbr soM something
@@ -155,5 +148,5 @@ nnoremap <leader><leader>e :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " >> For reload on vimrc save
 augroup myvimrc
     au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost init.vim,.vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
