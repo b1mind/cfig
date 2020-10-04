@@ -8,6 +8,14 @@
     <sets>
         <set index="1">
             <stick index="2">
+                <stickbutton index="7">
+                    <slots>
+                        <slot>
+                            <code>3</code>
+                            <mode>mousemovement</mode>
+                        </slot>
+                    </slots>
+                </stickbutton>
                 <stickbutton index="1">
                     <slots>
                         <slot>
@@ -32,16 +40,16 @@
                         </slot>
                     </slots>
                 </stickbutton>
-                <stickbutton index="7">
+            </stick>
+            <dpad index="1">
+                <dpadbutton index="8">
                     <slots>
                         <slot>
                             <code>3</code>
-                            <mode>mousemovement</mode>
+                            <mode>mousebutton</mode>
                         </slot>
                     </slots>
-                </stickbutton>
-            </stick>
-            <dpad index="1">
+                </dpadbutton>
                 <dpadbutton index="1">
                     <slots>
                         <slot>
@@ -66,14 +74,6 @@
                         </slot>
                     </slots>
                 </dpadbutton>
-                <dpadbutton index="8">
-                    <slots>
-                        <slot>
-                            <code>3</code>
-                            <mode>mousebutton</mode>
-                        </slot>
-                    </slots>
-                </dpadbutton>
             </dpad>
             <trigger index="1">
                 <throttle>positivehalf</throttle>
@@ -88,12 +88,6 @@
                     <mouseacceleration>easing-quadratic</mouseacceleration>
                     <accelerationmultiplier>5</accelerationmultiplier>
                     <accelextraduration>0.2</accelextraduration>
-                    <slots>
-                        <slot>
-                            <code>1</code>
-                            <mode>mousemovement</mode>
-                        </slot>
-                    </slots>
                 </triggerbutton>
                 <triggerbutton index="2">
                     <mousespeedx>33</mousespeedx>
@@ -101,12 +95,6 @@
                     <mouseacceleration>easing-quadratic</mouseacceleration>
                     <accelerationmultiplier>5</accelerationmultiplier>
                     <accelextraduration>0.2</accelextraduration>
-                    <slots>
-                        <slot>
-                            <code>2</code>
-                            <mode>mousemovement</mode>
-                        </slot>
-                    </slots>
                 </triggerbutton>
             </trigger>
         </set>
