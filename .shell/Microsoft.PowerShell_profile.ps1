@@ -1,4 +1,4 @@
-# *** Must add this to $profile load***
+# *** Must add this to $profile or load the below line***
 # $fileContents = [string]::join([environment]::newline, (get-content -path ~/cfig/shell/Microsoft.PowerShell_profile.ps1))
 # invoke-expression $fileContents
 
@@ -25,8 +25,8 @@ Write-Host "    |_|      \/|_||_| |_| \__,_|" -foregroundColor Blue
 Write-Host "                                  -------------------------"
 
 # >> Alias and Vars
-$vim = "C:\Program Files (x86)\Vim\vim82\vim.exe"
-Set-Alias -name v -value $vim
+$nvim = "C:\Program Files\Neovim\bin\nvim.exe"
+Set-Alias -name v -value $nvim
 
 $ws = "D:\websites\"
 $cf = "~\cfig\"
@@ -35,8 +35,8 @@ Set-Alias -name ws -value wsPath
 Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
 
-$vrc = "~\cfig\_vimrc"
-$prof = "~\cfig\shell\Microsoft.PowerShell_profile.ps1"
+$vrc = "~cfig\_vimrc"
+# $prof = "~\cfig\.shell\Microsoft.PowerShell_profile.ps1"
 
 $ahkScript = "~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\capsEsacpeSwitch.ahk"
 $nostromo = "~\AppData\Roaming\Belkin\Nostromo\Profiles\*.*"
