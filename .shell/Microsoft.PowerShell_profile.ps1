@@ -35,7 +35,7 @@ Set-Alias -name ws -value wsPath
 Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
 
-$vrc = "~cfig\_vimrc"
+$vrc = "~\cfig\_vimrc"
 # $prof = "~\cfig\.shell\Microsoft.PowerShell_profile.ps1"
 
 $ahkScript = "~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\capsEsacpeSwitch.ahk"
