@@ -14,7 +14,7 @@
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
   "keyMappings": "# Insert your preferred key mappings here.\nunmap <c-e>\nunmap <c-y>\nunmap [[\nunmap ]]\n\nmap J scrollPageDown\nmap K scrollPageUp\nmap [ goPrevious\nmap ] goNext\nmap F LinkHints.activateModeToOpenInNewForegroundTab\nmap , visitPreviousTab\nmap . nextTab",
-  "linkHintCharacters": "fdsajklgh",
+  "linkHintCharacters": "fdsajklghiowe",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
