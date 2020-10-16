@@ -25,8 +25,10 @@ Write-Host "    |_|      \/|_||_| |_| \__,_|" -foregroundColor Blue
 Write-Host "                                  -------------------------"
 
 # >> Alias and Vars
-$nvim = "C:\Program Files\Neovim\bin\nvim.exe"
+$nvim = "C:/Program Files/Neovim/bin/nvim.exe"
 Set-Alias -name v -value $nvim
+
+Set-Alias -name upT -value Get-Uptime
 
 $ws = "D:\websites\"
 $cf = "~\cfig\"
@@ -35,7 +37,7 @@ Set-Alias -name ws -value wsPath
 Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
 
-$vrc = "~\cfig\_vimrc"
+$vrc = "~/cfig/_vimrc"
 # $prof = "~\cfig\.shell\Microsoft.PowerShell_profile.ps1"
 
 $ahkScript = "~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\capsEsacpeSwitch.ahk"
