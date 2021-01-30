@@ -5,4 +5,4 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Capslock::LCtrl
 Esc::Capslock
 LCtrl::Esc
-
+!Space::!Tab

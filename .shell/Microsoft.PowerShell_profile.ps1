@@ -37,6 +37,9 @@ Set-Alias -name ws -value wsPath
 Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
 
+Function nukenode {Get-ChildItem -Path "." -Include "node_modules" -Recruse -Directory | Remove-Item -Recruse -Force}
+Set-Alias -name nukenode -value nukenode
+
 $vrc = "~/cfig/_vimrc"
 # $prof = "~\cfig\.shell\Microsoft.PowerShell_profile.ps1"
 
