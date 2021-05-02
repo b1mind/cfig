@@ -34,6 +34,7 @@ if !exists('g:vscode')
   set undodir=~/.vim/undodir
   set undofile
   set scrolloff=8
+
   " set completeopt=menuone,noinsert,noselect
   set cmdheight=2
   set updatetime=50
@@ -45,9 +46,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
+  Plug 'tpope/vim-commentary'
 
-  if !exists('g:vscode')
-    Plug 'tpope/vim-commentary'
+  " neovim plugins only
+  if !exists('g:vscode') 
 
     " visual plugs
     Plug 'vim-airline/vim-airline'
@@ -110,12 +112,10 @@ if !exists('g:vscode')
   " leader leader window/plugin actions 
   nnoremap <leader><leader>u :UndotreeShow<CR>
   nnoremap <leader><leader>e :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-  nnoremap <leader>s :w<CR>
-  nnoremap <leader>q :q<CR> 
 
 endif "end not vsCode settings
 
-"Key maps
+"Key maps all modes
 let mapleader = " "
 
 " nav remaps
@@ -134,10 +134,16 @@ vnoremap > >gv
 vnoremap < <gv
 vnoremap , %
 vmap r gr 
+vnoremap <leader>i $
  
 " < cause i know better
-"FIXME gr needs to be recursive?
-nmap r gr 
+
+" Map for r as gr
+nmap  <silent> r :set opfunc=SpecialChange<CR>gr
+function! SpecialChange(type)
+    silent exec 'g r' 
+endfunction
+
 nnoremap R r
 nnoremap S R
 nnoremap , %
@@ -145,8 +151,15 @@ nnoremap U <C-r>
 nnoremap Q @
 nmap <CR> o<Esc>
 
+" ctrl maps
+nnoremap <C-s> <Cmd>:w<CR>
+"nnoremap <C-w> <Cmd>:wq<CR>
+
 " leader maps
-nnoremap <leader>' $
+nnoremap <leader>s <Cmd>:w<CR>
+nnoremap <leader>q <Cmd>:wq<CR>
+nnoremap <leader>o o<Esc>O
+nnoremap <leader>i $
 nnoremap <leader>a ^
 nnoremap <leader>; $a;<Esc>
 nnoremap <leader>, $a,<Esc>
@@ -156,7 +169,7 @@ nnoremap <leader>j zb
 nnoremap <leader>k zt
 nnoremap <leader>f zz
 nnoremap <leader>J J
-nnoremap <leader>o o<Esc>O
+"TODO nnoremap <leader>K "break line at next space
 
 " Imitate goto symbol clear/insert
 nnoremap <leader>{ f{ci{
@@ -173,14 +186,16 @@ nnoremap <leader>] f]i
 " Todo better [ ] 
 
 " Todo split buffer/panes
+
 if exists('g:vscode') " start vs code only settings
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
   nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
-  nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
-  nnoremap <silent> v <Cmd>call VSCodeCall('settings.cycle.statusBarVisual')<CR>v
-  nnoremap <silent> ; <Cmd>call VSCodeCall('settings.cycle.statusBarEsc')<CR><Esc>
-  nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+  "nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
+  "#nnoremap <silent> v <Cmd>call VSCodeCall('settings.cycle.statusBarVisual')<CR>v
+  "#nnoremap <silent> ; <Cmd>call VSCodeCall('settings.cycle.statusBarEsc')<CR><Esc>
+  "#nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 
+  " Fix for comments?
   xmap gc  <Plug>VSCodeCommentary
   nmap gc  <Plug>VSCodeCommentary
   omap gc  <Plug>VSCodeCommentary
