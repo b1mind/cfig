@@ -58,8 +58,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'joshdick/onedark.vim'
     Plug 'ryanoasis/vim-devicons'
 
-    " Primeagen recommends--
+    " Good
     Plug 'tpope/vim-commentary'
+    " Plug 'michaeljsmith/vim-indent-object'
+
+    " Primeagen recommends--
     Plug 'tpope/vim-fugitive'
     Plug 'vim-utils/vim-man'
     Plug 'mbbill/undotree'
@@ -114,7 +117,6 @@ if !exists('g:vscode')
   nnoremap <C-j> <C-w>j
   nnoremap <C-k> <C-w>k
   nnoremap <C-l> <C-w>l
-  nnoremap <C-o> <C-w>o
 
   " mimic vsc binds
   nnoremap <C-w> <Cmd>:q<CR>
@@ -129,6 +131,9 @@ if !exists('g:vscode')
 endif "end not vsCode settings
 
 ">> Plug Settings for all version
+let g:wordmotion_prefix = "<leader>"
+let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
+
 highlight QuickScopePrimary gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary gui=underline ctermfg=81 cterm=underline
 " highlight QuickScopePrimary guifg='#666666' gui=underline ctermfg=155 cterm=underline
@@ -139,6 +144,7 @@ highlight QuickScopeSecondary gui=underline ctermfg=81 cterm=underline
 let mapleader = " "
 
 " nav remaps
+nnoremap die ggVG
 nnoremap J }j
 nnoremap K {k
 nnoremap H B
@@ -146,39 +152,48 @@ nnoremap L W
 nnoremap } 9k
 nnoremap { 9j
 
-" insert maps
-"inoremap gcp <c-p>"0p
-
-" visual remaps
-vnoremap > >gv
-vnoremap < <gv
-vnoremap , %
-vmap r gr 
-vnoremap <C-c> "+y
-vmap <leader>i $
-
-" Map for r as gr
-nmap  <silent> r :set opfunc=SpecialChange<CR>gr
-function! SpecialChange(type)
-    silent exec 'gr' 
-endfunction
-
+" normal maps
 nnoremap R r
 nnoremap S R
 nnoremap , %
 nnoremap U <C-r>
-inoremap <C-p> <C-r>
-
-"TODO suggestions (ctrl + . works) "inoremap <C-space> <C-p>
 nnoremap Q @
-nmap <CR> o<Esc>
+
+" insert maps
+inoremap <C-p> <C-r>0
+
+"FIXME suggestions (ctrl + . works) "inoremap <C-space> <C-p>
+
+" visual remaps
+vnoremap L W
+vnoremap H B
+vnoremap > >gv
+vnoremap < <gv
+vnoremap , %
+vnoremap <C-c> "+y
+
+"FIXME vmap <C-/> gcc
+vmap <leader>i $
+vmap <leader>a ^
+vmap s S
+
+" gspot maps
+nmap gs ysiw
+
+" Map for r as gr
+vmap r gr 
+nmap <silent> r :set opfunc=SpecialChange<CR>gr
+function! SpecialChange(type)
+    silent exec 'gr' 
+endfunction
 
 " ctrl maps
+nmap <CR> o<Esc>
+"FIXME " nmap <S-C><CR> O<Esc>
 nnoremap <C-s> <Cmd>:w<CR>
 
 " leader maps
 nnoremap <leader>s <Cmd>:w<CR>
-nnoremap <leader>w <Cmd>:q<CR>
 nnoremap <leader>q <Cmd>:wq<CR>
 nnoremap <leader>o o<Esc>O
 nnoremap <leader>i $
@@ -192,8 +207,8 @@ nnoremap <leader>j zb
 nnoremap <leader>k zt
 nnoremap <leader>f zz
 nnoremap <leader>J J
-noremap <leader>v vabV
-noremap <leader>V vaBV
+noremap <leader>v vaBV
+noremap <leader>V vabV
 
 "FIXME nnoremap <leader>K "break line at next space
 
@@ -208,6 +223,7 @@ nnoremap <leader>] f]i
 "TODO better [ ] as g; and g,
 if exists('g:vscode') " start vs code only settings
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
   nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
 
   "gspot vsc actions (todo make some work for neovim)
