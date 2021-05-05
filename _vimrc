@@ -8,6 +8,10 @@ if !exists('g:vscode')
 
   " -- Keep Settings --
   set termguicolors
+  set cursorline
+  set incsearch
+  set smartcase
+  set showmatch
   set relativenumber
   set belloff=all
   set tabstop=2
@@ -18,11 +22,7 @@ if !exists('g:vscode')
   set nu
   set nowrap
   set splitbelow splitright
-  set cursorline
   set wildmenu
-  set incsearch
-  set showmatch
-  set smartcase
   set nocompatible
 
   filetype off
@@ -47,8 +47,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
+  Plug '/rhysd/clever-f.vim'
 
-  " neovim plugins only
+  " >vim plugins only
   if !exists('g:vscode') 
 
     " visual plugs
@@ -78,7 +79,7 @@ call plug#begin('~/.vim/plugged')
 ":Plug install, update, help
 call plug#end() 
 
-" VIM only settings
+" >vim only settings
 if !exists('g:vscode')
   " >> qol settings
   let g:netrw_browse_split = 2
@@ -86,6 +87,16 @@ if !exists('g:vscode')
   let g:netrw_winsize = 25
 
   " >> ThemeSetup--
+    "
+  augroup qs_colors
+    autocmd!
+    " autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+    " autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+    autocmd ColorScheme * highlight QuickScopePrimary gui=underline ctermfg=155 cterm=underline
+    autocmd ColorScheme * highlight QuickScopeSecondary guifg='#e3e3e3' gui=underline ctermfg=81 cterm=underline
+  " highlight QuickScopeSecondary guifg='#888888' gui=underline ctermfg=81 cterm=underline
+  augroup END
+
   let g:airline#extensions#tabline#enabled = 1
   colorscheme onedark
   set termguicolors
@@ -108,10 +119,12 @@ if !exists('g:vscode')
   imap ; <Esc>
   vmap ; <Esc>
 
-  "TODO add terminal hotkey for vim
+  "TODO add terminal hotkey for vim opens in new buffer
   "
   "TODO split buffer/panes
   "
+  "TODO map <C-t> buffer tab cycle
+  
   " navigate windows/buffers
   nnoremap <C-h> <C-w>h
   nnoremap <C-j> <C-w>j
@@ -122,22 +135,23 @@ if !exists('g:vscode')
   nnoremap <C-w> <Cmd>:q<CR>
 
   "FIXME " nnoremap <C-r> :replace all defName vsCode
-  "FIXME " nnoremap <C-/> gcc
+  "FIXME " nnoremap <C-/> Vgc
 
   " leader leader window/plugin actions 
   nnoremap <leader><leader>u :UndotreeShow<CR>
   nnoremap <leader><leader>e :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+  nnoremap <C-S-E>:wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
-endif "end not vsCode settings
+endif "end vim only settings
 
 ">> Plug Settings for all version
 let g:wordmotion_prefix = "<leader>"
 let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
 
-highlight QuickScopePrimary gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary gui=underline ctermfg=81 cterm=underline
-" highlight QuickScopePrimary guifg='#666666' gui=underline ctermfg=155 cterm=underline
-" highlight QuickScopeSecondary guifg='#888888' gui=underline ctermfg=81 cterm=underline
+" FIXME bad highlights
+" let g:clever_f_mark_direct = 1
+" let g:clever_f_chars_match_any_signs = 1
+
 
 ">> Key maps for all
 "<< cause i know better
@@ -158,6 +172,7 @@ nnoremap S R
 nnoremap , %
 nnoremap U <C-r>
 nnoremap Q @
+" nnoremap <silent> <Esc> :noh<CR>
 
 " insert maps
 inoremap <C-p> <C-r>0
@@ -188,7 +203,7 @@ function! SpecialChange(type)
 endfunction
 
 " ctrl maps
-nmap <CR> o<Esc>
+nnoremap <CR> o<Esc>
 "FIXME " nmap <S-C><CR> O<Esc>
 nnoremap <C-s> <Cmd>:w<CR>
 
@@ -221,24 +236,35 @@ nnoremap <leader>[ f[ci[
 nnoremap <leader>] f]i
 
 "TODO better [ ] as g; and g,
-if exists('g:vscode') " start vs code only settings
-  nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
-  nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
-  nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
 
-  "gspot vsc actions (todo make some work for neovim)
+if exists('g:vscode') " start vs code only settings
+  " nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
+  nnoremap <silent> <leader><leader>r <Cmd>call VSCodeCall('workbench.action.openRecent')<CR>
+
+  " hit that gspot with vsc actions (todo make some work for neovim)
   nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
   nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
+
+  " Git version controls
   nnoremap <silent> gv <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
+  "TODO some things to control git staging? can use vim commands?
+  "TODO gpot for errors? gE? then <c-d><c-u>
+
   noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
   noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
 
-  "Good example of cmd bind that extends
+  " Good example of cmd bind that extends
   nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 
-  "TODO "Bookmarks for m1 m2 m3,,, '1 '2 '3
+  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=81 
+  highlight QuickScopeSecondary guifg='#888888' gui=underline cterm=underline ctermfg=81
+
+  "TODO " Bookmarks for m1 m2 m3,,, '1 '2 '3
 
   " Fix for comments?
+  "FIXME use plugin for vim motions not working with vsCode comments
   xmap gc  <Plug>VSCodeCommentary
   nmap gc  <Plug>VSCodeCommentary
   omap gc  <Plug>VSCodeCommentary
@@ -246,9 +272,9 @@ if exists('g:vscode') " start vs code only settings
 
   "FIXME " Highlighting in vsCode/neoVCS/neovim are all different?
   nnoremap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
-  vmap af <Cmd>call VSCodeCall('editor.action.smartSelect.expand')<CR>
-  vmap aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
-  "
+  vmap <silent> af <Cmd>call VSCodeCall('editor.action.smartSelect.grow')<CR>
+  vmap <silent> aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
+
   "BORKED
   "(Hacky attempt and having colored action bar but overwrites and esc not working)
   "nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
