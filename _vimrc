@@ -81,6 +81,9 @@ call plug#end()
 
 " >vim only settings
 if !exists('g:vscode')
+
+  let mapleader = " "
+
   " >> qol settings
   let g:netrw_browse_split = 2
   let g:netrw_banner = 0
@@ -115,7 +118,7 @@ if !exists('g:vscode')
       au BufWritePost init.vim,.vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
   augroup END
 
-  " >> Keymappings VIM only
+  " >> Key mappings VIM only
   imap ; <Esc>
   vmap ; <Esc>
 
@@ -156,6 +159,7 @@ let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
 ">> Key maps for all
 "<< cause i know better
 let mapleader = " "
+" nnoremap ; zz
 
 " nav remaps
 nnoremap die ggVG
@@ -176,6 +180,7 @@ nnoremap Q @
 
 " insert maps
 inoremap <C-p> <C-r>0
+inoremap <C-l> <Del>
 
 "FIXME suggestions (ctrl + . works) "inoremap <C-space> <C-p>
 
@@ -238,6 +243,7 @@ nnoremap <leader>] f]i
 "TODO better [ ] as g; and g,
 
 if exists('g:vscode') " start vs code only settings
+
   " nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
   map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
   nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
@@ -258,8 +264,8 @@ if exists('g:vscode') " start vs code only settings
   " Good example of cmd bind that extends
   nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 
-  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=81 
-  highlight QuickScopeSecondary guifg='#888888' gui=underline cterm=underline ctermfg=81
+  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
+  highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
 
   "TODO " Bookmarks for m1 m2 m3,,, '1 '2 '3
 
