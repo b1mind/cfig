@@ -76,7 +76,7 @@ call plug#begin('~/.vim/plugged')
     "  Plug 'theprimeagen/vim-be-good'
   endif
 
-":Plug install, update, help
+" Plug install, update, help
 call plug#end() 
 
 " >vim only settings
@@ -150,6 +150,8 @@ endif "end vim only settings
 ">> Plug Settings for all version
 let g:wordmotion_prefix = "<leader>"
 let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
+let g:clever_f_chars_match_any_signs = ";"
+" let g:clever_f_fix_key_direction = 1
 
 " FIXME bad highlights
 " let g:clever_f_mark_direct = 1
@@ -220,6 +222,7 @@ nnoremap <leader>i $
 nnoremap <leader>a ^
 
 nnoremap <leader>; $a;<Esc>
+nnoremap <leader><leader>; a;<Esc>
 nnoremap <leader>, $a,<Esc>
 nnoremap <leader>p "*p
 nnoremap <leader>m M
@@ -227,8 +230,8 @@ nnoremap <leader>j zb
 nnoremap <leader>k zt
 nnoremap <leader>f zz
 nnoremap <leader>J J
-noremap <leader>v vaBV
-noremap <leader>V vabV
+nnoremap <leader>v vaBV
+nnoremap <leader>V vabV
 
 "FIXME nnoremap <leader>K "break line at next space
 
@@ -275,9 +278,9 @@ if exists('g:vscode') " start vs code only settings
   nmap gc  <Plug>VSCodeCommentary
   omap gc  <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
+  vmap gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
 
   "FIXME " Highlighting in vsCode/neoVCS/neovim are all different?
-  nnoremap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
   vmap <silent> af <Cmd>call VSCodeCall('editor.action.smartSelect.grow')<CR>
   vmap <silent> aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
 
