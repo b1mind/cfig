@@ -1,6 +1,9 @@
 set nohlsearch
 set hidden
 
+" % for html tags use https://www.vim.org/scripts/script.php?script_id=39
+filetype plugin on
+
 if !exists('g:vscode')
   syntax on
   set encoding=UTF-8
@@ -25,7 +28,7 @@ if !exists('g:vscode')
   set wildmenu
   set nocompatible
 
-  filetype off
+  " filetype off
 
   set showcmd
   set noswapfile
@@ -47,6 +50,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
+  "TEST THIS " Plugin 'alvan/vim-closetag'
   " Plug '/rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -59,6 +63,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'sainnhe/gruvbox-material'
     Plug 'joshdick/onedark.vim'
     Plug 'ryanoasis/vim-devicons'
+
+    " Utlities
+    " Plug 'lifepillar/vim-colortemplate'
 
     " Good
     Plug 'tpope/vim-commentary'
@@ -176,7 +183,7 @@ nnoremap { 9j
 " normal maps
 nnoremap R r
 nnoremap S R
-nnoremap , %
+map , %
 nnoremap U <C-r>
 nnoremap Q @
 " nnoremap <silent> <Esc> :noh<CR>
