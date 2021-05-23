@@ -1,9 +1,11 @@
+set exrc 
 set nohlsearch
 set hidden
 
 " % for html tags use https://www.vim.org/scripts/script.php?script_id=39
 filetype plugin on
 
+if !exists('g:vscode')
   syntax on
   set encoding=UTF-8
   set t_Co=256
@@ -42,6 +44,7 @@ filetype plugin on
   set updatetime=50
   set shortmess+=c
 
+endif
 
 " >> Plugins! --
 call plug#begin('~/.vim/plugged')
@@ -49,11 +52,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
-  "TEST THIS " Plugin 'alvan/vim-closetag'
-  " Plug '/rhysd/clever-f.vim'
+  " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
+  if !exists('g:vscode') 
     " need to try in vsCode still
+    "TEST THIS " Plugin 'alvan/vim-closetag'
 
     " visual plugs
     Plug 'vim-airline/vim-airline'
@@ -77,14 +81,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'stsewd/fzf-checkout.vim'
-    " Plug 'vuciv/vim-bujo'
+    Plug 'vuciv/vim-bujo'
     Plug 'tpope/vim-dispatch'
     "  Plug 'theprimeagen/vim-be-good'
+  endif
 
 " Plug install, update, help
 call plug#end() 
 
 " >vim only settings
+if !exists('g:vscode')
 
   let mapleader = " "
 
@@ -126,7 +132,10 @@ call plug#end()
   imap ; <Esc>
   vmap ; <Esc>
 
-  "TODO add terminal hotkey for vim opens in new buffer
+  vnoremap J :m '>+1<CR>gv=gv
+  vnoremap K :m '<-2<CR>gv=gv
+
+ "TODO add terminal hotkey for vim opens in new buffer
   "
   "TODO split buffer/panes
   "
@@ -149,27 +158,25 @@ call plug#end()
   nnoremap <leader><leader>e :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
   nnoremap <C-S-E>:wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
+endif 
+"end vim only settings
 
 ">> Plug Settings for all version
 let g:wordmotion_prefix = "<leader>"
 let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
-" let g:clever_f_chars_math_any_signs = ";"
+" let g:clever_f_chars_match_any_signs = ";"
 " let g:clever_f_fix_key_direction = 1
-
-" FIXME bad highlights
 " let g:clever_f_mark_direct = 1
-" let g:clever_f_chars_match_any_signs = 1
-
 
 ">> Key maps for all
 "<< cause i know better
 let mapleader = " "
 " nnoremap ; zz
+noremap J }j
+noremap K {k
 
 " nav remaps
 nnoremap die ggVG
-nnoremap J }j
-nnoremap K {k
 nnoremap H B
 nnoremap L W
 nnoremap } 9k
@@ -229,15 +236,13 @@ nmap <leader>; $a;<Esc>
 nmap <leader><leader>; a;<Esc>
 nmap <leader>, $a,<Esc>
 nmap <leader>p "*p
+" nmap <leader>p "_dp
 nmap <leader>m M
-nmap <leader>j zb
-nmap <leader>k zt
-nmap <leader>f zz
 nmap <leader>v vaBV
 nmap <leader>V vabV
 
 "FIXME nnoremap <leader>K "break line at next space
-nnoremap <leader>J J
+noremap <leader>J J
 
 " Imitate goto symbol clear/insert
 nmap <leader>{ f{ci{
@@ -248,3 +253,75 @@ nmap <leader>[ f[ci[
 nmap <leader>] f]i
 
 "TODO better [ ] as g; and g,
+
+if exists('g:vscode') " start vs code only settings
+
+  " nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+
+  " FIXME buffer wont save in vsCode?
+  nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
+  nnoremap <silent> <leader><leader>r <Cmd>call VSCodeCall('workbench.action.openRecent')<CR>
+
+  " hit that gspot with vsc actions (todo make some work for neovim)
+  nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
+  nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
+
+  " Git version controls
+  nnoremap <silent> gD <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
+  "TODO some things to control git staging? can use vim commands?
+  "TODO gpot for errors? gE? then <c-d><c-u>
+
+  noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
+  noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
+
+  " For my bookmarks extension
+  " TODO make a function for taking in the number (refactor dis shitz)
+  noremap <silent> m1 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark1')<CR>
+  noremap <silent> m2 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark2')<CR>
+  noremap <silent> m3 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark3')<CR>
+  noremap <silent> m4 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark4')<CR>
+  noremap <silent> m5 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark5')<CR>
+  noremap <silent> m6 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark6')<CR>
+  noremap <silent> m7 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark7')<CR>
+  noremap <silent> m8 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark8')<CR>
+  noremap <silent> m9 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark9')<CR>
+  noremap <silent> m0 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark0')<CR>
+  noremap <silent> '1 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark1')<CR>
+  noremap <silent> '2 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark2')<CR>
+  noremap <silent> '3 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark3')<CR>
+  noremap <silent> '4 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark4')<CR>
+  noremap <silent> '5 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark5')<CR>
+  noremap <silent> '6 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark6')<CR>
+  noremap <silent> '7 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark7')<CR>
+  noremap <silent> '8 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark8')<CR>
+  noremap <silent> '9 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark9')<CR>
+  noremap <silent> '0 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark0')<CR>
+
+  " Good example of cmd bind that extends
+  nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+
+  " Different settings in vsCode for scoping 
+  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
+  highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
+
+  " Fix for comments?
+  "FIXME use plugin for vim motions not working with vsCode comments
+  xmap gc  <Plug>VSCodeCommentary
+  nmap gc  <Plug>VSCodeCommentary
+  omap gc  <Plug>VSCodeCommentary
+  nmap gcc <Plug>VSCodeCommentaryLine
+  vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
+
+  "FIXME " Highlighting in vsCode/neoVCS/neovim are all different?
+  vmap <silent> af <Cmd>call VSCodeCall('editor.action.smartSelect.grow')<CR>
+  vmap <silent> aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
+
+  "BORKED
+  "(Hacky attempt and having colored action bar but overwrites and esc not working)
+  "nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
+  "#nnoremap <silent> v <Cmd>call VSCodeCall('settings.cycle.statusBarVisual')<CR>v
+  "#nnoremap <silent> ; <Cmd>call VSCodeCall('settings.cycle.statusBarEsc')<CR><Esc>
+  "#nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+
+endif
