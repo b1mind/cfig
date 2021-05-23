@@ -134,11 +134,9 @@ if !exists('g:vscode')
 
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv
-
- "TODO add terminal hotkey for vim opens in new buffer
-  "
+ 
   "TODO split buffer/panes
-  "
+
   "TODO map <C-t> buffer tab cycle
   
   " navigate windows/buffers
@@ -146,6 +144,9 @@ if !exists('g:vscode')
   nnoremap <C-j> <C-w>j
   nnoremap <C-k> <C-w>k
   nnoremap <C-l> <C-w>l
+
+  nnoremap gt :bnext<CR>
+  nnoremap gT :pnext<CR>
 
   " mimic vsc binds
   nnoremap <C-w> <Cmd>:q<CR>
@@ -224,22 +225,26 @@ nnoremap <CR> o<Esc>
 nnoremap <C-s> <Cmd>:w<CR>
 
 " leader maps
-nmap <leader>a $
-nmap <leader>i ^
-vmap <leader>i $
-vmap <leader>a ^
+nnoremap <leader>a $
+nnoremap <leader>i ^
+vnoremap <leader>i $
+vnoremap <leader>a ^
 
-nmap <leader>o o<Esc>O
-nmap <leader>. @@
+nnoremap <leader>o o<Esc>O
+nnoremap <leader>. @@
 
-nmap <leader>; $a;<Esc>
-nmap <leader><leader>; a;<Esc>
-nmap <leader>, $a,<Esc>
-nmap <leader>p "*p
-" nmap <leader>p "_dp
-nmap <leader>m M
-nmap <leader>v vaBV
-nmap <leader>V vabV
+nnoremap <leader>; $a;<Esc>
+nnoremap <leader><leader>; a;<Esc>
+nnoremap <leader>, $a,<Esc>
+nnoremap <leader>p "+p
+nnoremap <leader>m M
+nnoremap <leader>v vaBV
+nnoremap <leader>V vabV
+
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
 "FIXME nnoremap <leader>K "break line at next space
 noremap <leader>J J
