@@ -21,7 +21,7 @@ alias .c='clear'
 
 alias rcb='nvim ~/.bashrc'
 alias rcv='nvim ~/.config/nvim/init.vim'
-alias rcw='nvim /mnt/c/Users/sh0rt/cfig/_vimrc'
+alias rcw='nvim ~/.vimrc'
 
 alias fws='cd /mnt/d/websites'
 alias fcf='cd /mnt/c/Users/sh0rt/cfig'
