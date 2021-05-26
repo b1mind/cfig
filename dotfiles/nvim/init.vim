@@ -1,13 +1,10 @@
 set exrc 
 set nohlsearch
 set hidden
-source ~/vimfiles/plugin/matchit.vim
 
 " % for html tags use https://www.vim.org/scripts/script.php?script_id=39
 filetype plugin on
-:runtime macros/matchit.vim
 
-filetype off
 
 if !exists('g:vscode')
   syntax on
@@ -33,6 +30,7 @@ if !exists('g:vscode')
   set wildmenu
   set nocompatible
 
+  filetype off
 
   set showcmd
   set noswapfile
