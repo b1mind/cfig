@@ -26,7 +26,11 @@ files =  [
   { 
     "basePath": "/Documents/AntiMicro/",
     "cfigPath": "/cfig/AntiMicro/"
-  }
+  },
+  { 
+    "basePath": "/AppData/Roaming/Code/User/keybindings.json",
+    "cfigPath": "/cfig/.code/"
+  },
 ]
 print("Starting cfig backup")
 
