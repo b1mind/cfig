@@ -14,8 +14,8 @@ files =  [
   },
 
   {
-    "basePath": "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/capsEscapeSwitch.ahk",
-    "cfigPath": "/cfig/AutoHotKey/capsEscapeSwitch.ahk",
+    "basePath": "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/spaceTab.ahk",
+    "cfigPath": "/cfig/AutoHotKey/spaceTab.ahk",
   },
 
   { 

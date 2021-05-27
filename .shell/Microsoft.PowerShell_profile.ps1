@@ -27,15 +27,26 @@ Write-Host "                                  -------------------------"
 # >> Alias and Vars
 $nvim = "C:/Program Files/Neovim/bin/nvim.exe"
 Set-Alias -name v -value $nvim
+# $qmk = "C:/QMK_MSYS/user/bin/bash.exe"
+# Set-Alias -name qmk -value $qmk
 
 Set-Alias -name upT -value Get-Uptime
 
 $ws = "D:\websites\"
-$cf = "~\cfig\"
 Function wsPath {Set-Location -Path $ws}
 Set-Alias -name ws -value wsPath
+
+$cf = "~\cfig\"
 Function configPath {Set-Location -Path $cf}
 Set-Alias -name cf -value configPath
+
+# $qmk = "C:\QMK_MSYS\conemu\ConEmu64.exe"
+# Function qmkTerminal {Set-Location -Path $qmk}
+# Set-Alias -name qmk -value qmkTerminal
+
+$keys = "~\qmk_firmware\keyboards\pinky\4\keymaps\b1m1nd\"
+Function keyMaps {Set-Location -Path $keys}
+Set-Alias -name keys -value keyMaps
 
 Function nukenode {Get-ChildItem -Path "." -Include "node_modules" -Recruse -Directory | Remove-Item -Recruse -Force}
 Set-Alias -name nukenode -value nukenode
