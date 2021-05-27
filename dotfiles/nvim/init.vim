@@ -2,10 +2,6 @@ set exrc
 set nohlsearch
 set hidden
 
-" % for html tags use https://www.vim.org/scripts/script.php?script_id=39
-filetype plugin on
-
-
 if !exists('g:vscode')
   syntax on
   set encoding=UTF-8
@@ -30,7 +26,9 @@ if !exists('g:vscode')
   set wildmenu
   set nocompatible
 
-  filetype off
+  " % for html tags use https://www.vim.org/scripts/script.php?script_id=39
+  filetype plugin on
+  " filetype off
 
   set showcmd
   set noswapfile
@@ -75,6 +73,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'michaeljsmith/vim-indent-object'
 
     " Primeagen recommends--
+    "Plug ***Get Harpoooooon and Telescope learn the way ..
     Plug 'tpope/vim-fugitive'
     Plug 'vim-utils/vim-man'
     Plug 'mbbill/undotree'
@@ -217,6 +216,7 @@ vmap r gr
 nmap <silent> r :set opfunc=SpecialChange<CR>gr
 function! SpecialChange(type)
     silent exec 'gr' 
+
 endfunction
 
 " ctrl maps

@@ -8,25 +8,22 @@
     "command": "list.focusDown",
     "when": "listFocus && !inputFocus"
   },
-  {
-    "key": "ctrl+k",
-    "command": "list.focusUp",
-    "when": "explorerViewletFocus"
-  },
+
+  //todo check if in toggleKeyboardNavigation for list nav currently still c-p/n
   {
     "key": "h",
     "command": "list.collapse",
     "when": "listFocus && !inputFocus"
   },
   {
-    "key": "shift+o",
-    "command": "list.collapseAll",
-    "when": "listFocus && !editorTextFocus && !inputFocus"
-  },
-  {
     "key": "o",
     "command": "list.toggleExpand",
     "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "shift+o",
+    "command": "list.collapseAll",
+    "when": "listFocus && !editorTextFocus && !inputFocus"
   },
   {
     "key": "l",
@@ -36,7 +33,7 @@
   {
     "key": "/",
     "command": "list.toggleKeyboardNavigation",
-    "when": "filesExplorerFocus || activeViewlet == 'workbench.view.extension.todo' "
+    "when": "filesExplorerFocus || !editorFocus && activeViewlet == 'workbench.view.extension.todo' "
   },
 
   {
@@ -62,11 +59,6 @@
     "when": "!explorerViewletFocus && listFocus && !inputFocus "
   },
 
-  {
-    "key": "ctrl+j",
-    "command": "list.focusDown",
-    "when": "explorerViewletFocus"
-  },
   {
     "key": "k",
     "command": "list.focusUp",
@@ -107,6 +99,18 @@
     "when": "editorHasMultipleSelections"
   },
   {
+    "key": "escape",
+    "command": "refactorPreview.discard",
+    "when": "refactorPreview.active"
+  },
+
+  //note This is a catch all don't delete...
+  {
+    "key": "ctrl+k ctrl+k",
+    "command": "workbench.action.navigateLast",
+    "when": "!terminalFocus || !editorFocus"
+  },
+  {
     "key": ";",
     "command": "removeSecondaryCursors",
     "when": "editorHasMultipleSelections"
@@ -126,35 +130,6 @@
     "command": "workbench.action.quickOpenNavigatePreviousInEditorPicker",
     "when": "inEditorsPicker && inQuickOpen"
   },
-
-  //< breadCrumbs
-  {
-    "key": "ctrl+space",
-    "command": "breadcrumbs.focusAndSelect",
-    "when": "vim.mode != 'Insert' && breadcrumbsPossible"
-  },
-  {
-    "key": "ctrl+shift+;",
-    "command": "-breadcrumbs.focus",
-    "when": "breadcrumbsPossible"
-  },
-  {
-    "key": "ctrl+shift+.",
-    "command": "-breadcrumbs.focusAndSelect",
-    "when": "breadcrumbsPossible"
-  },
-  {
-    "key": "shift+l",
-    "command": "breadcrumbs.focusNext",
-    "when": "breadcrumbsActive && breadcrumbsVisible"
-  },
-  {
-    "key": "shift+h",
-    "command": "breadcrumbs.focusPrevious",
-    "when": "breadcrumbsActive && breadcrumbsVisible"
-  },
-
-  //< inputs
 
   /* {
     "key": "ctrl+a",
@@ -205,6 +180,35 @@
     "when": "terminalFocus"
   },
 
+  //< breadCrumbs
+  {
+    "key": "ctrl+space",
+    "command": "breadcrumbs.focusAndSelect",
+    "when": "vim.mode != 'Insert' && breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+shift+;",
+    "command": "-breadcrumbs.focus",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "-breadcrumbs.focusAndSelect",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+
+  //< inputs
+
   //< search/replace panel
   {
     "key": "ctrl+j",
@@ -229,7 +233,7 @@
     "when": "filesExplorerFocus && explorerViewletFocus"
   },
   {
-    "key": "ctrl+n",
+    "key": "ctrl+t",
     "command": "explorer.newFile",
     "when": "filesExplorerFocus && explorerViewletFocus"
   },
@@ -260,10 +264,18 @@
     "command": "git.stage",
     "when": "!inputFocus && !textInputFocus && activeViewlet == 'workbench.view.scm'"
   },
+
   {
     "key": "ctrl+j",
     "command": "timeline.focus",
     "when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
+  },
+
+  //fixme can't navigate out till after first tab+shift
+  {
+    "key": "ctrl+j",
+    "command": "workbench.scm.focus",
+    "when": "!panelFocus && textInputFocus && activeViewlet == 'workbench.view.scm'"
   },
   {
     "key": "ctrl+k",
@@ -277,13 +289,6 @@
 
   //note this would be nice for something?
   // "command": "workbench.action.focusPanel",
-
-  //fixme can't navigate out till after first tab+shift
-  {
-    "key": "ctrl+j",
-    "command": "workbench.scm.focus",
-    "when": "!panelFocus && inputFocus && textInputFocus && activeViewlet == 'workbench.view.scm'"
-  },
 
   //< gitDiff editor navigation
   //fixme stageChange or toggle into lens
@@ -303,16 +308,16 @@
     "command": "editor.action.dirtydiff.previous",
     "when": "dirtyDiffVisible"
   },
+  {
+    "key": "shift+s",
+    "command": "git.stageSelectedRanges",
+    "when": "isInDiffEditor || dirtyDiffVisible"
+  },
 
   {
-    "key": "s",
-    "command": "git.stageSelectedRanges",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "r",
+    "key": "shift+r",
     "command": "git.revertSelectedRanges",
-    "when": "isInDiffEditor"
+    "when": "isInDiffEditor || dirtyDiffVisible"
   },
   {
     "key": "shift+u",
@@ -338,6 +343,7 @@
     "command": "editor.action.marker.next",
     "when": "neovim.mode == normal && editorTextFocus"
   },
+  //
 
   //< todo sideBar navigation
   {
@@ -393,8 +399,7 @@
   {
     "key": "ctrl+k",
     "command": "workbench.action.navigateUp",
-    // "command": "workbench.action.navigateBack",
-    "when": "editorFocus || panelFocus || terminal focus"
+    "when": "editorFocus || panelFocus || terminalFocus"
   },
   {
     "key": "ctrl+h",
@@ -410,7 +415,7 @@
   {
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight",
-    "when": "neovim.mode != insert && !panelFocus && !sideBarFocus"
+    "when": "neovim.mode != insert && !panelFocus && !sideBarFocus && !breadcrumbsActive"
   },
 
   {
@@ -433,8 +438,6 @@
     "command": "selectNextSuggestion",
     "when": "textInputFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
   },
-
-  //fixme suggestWidget
 
   {
     "key": "ctrl+k",
@@ -463,19 +466,26 @@
     "command": "editor.action.rename",
     "when": "neovim.mode == normal && editorTextFocus || vim.mode == 'normal' && editorTextFocus || !activeEditor &&  inputFocus"
   },
-  {
-    "key": "ctrl+r",
-    "command": "-workbench.action.quickOpenRecent",
-    "when": "neovim.init && editorFocus && !editorReadonly"
-  },
 
   {
     "key": "ctrl+p",
     "command": "extension.vim_ctrl+r",
     "when": "!neovim.init || vim.mode == 'Insert' && editorTextFocus && !editorReadonly"
   },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.quickOpenRecent",
+    "when": "neovim.init && editorFocus && !editorReadonly"
+  },
 
   //> NeoVim only commands
+  //? Keep this override for escaping peekwindows/ect.. There is a PR but not complete..
+  {
+    "command": "vscode-neovim.escape",
+    "key": "Escape",
+    "when": "!filesExplorerFocus && !dirtyDiffVisible && !inReferenceSearchEditor && !referenceSearchVisible && editorTextFocus && neovim.init && !markersNavigationVisible && !parameterHintsVisible"
+  },
+
   {
     "key": ";",
     "command": "vscode-neovim.escape",
@@ -496,12 +506,13 @@
     "when": "neovim.mode == insert"
   },
 
-  {
-    "command": "vscode-neovim.paste-register",
-    "key": "ctrl+p",
-    "args": "0",
-    "when": "editorTextFocus && neovim.mode == insert"
-  },
+  // {
+  //   "command": "vscode-neovim.paste-register",
+  //   "key": "ctrl+p",
+  //   "args": "0",
+  //   "when": "editorTextFocus && neovim.mode == insert"
+  // },
+
   {
     "command": "-vscode-neovim.send",
     "key": "ctrl+w"
@@ -520,6 +531,7 @@
     "key": "ctrl+shift+alt+;",
     "command": "workbench.action.nextPanelView"
   }
+
   //fixme make it find current word under cursor
   // {
   //   "key": "ctrl+shift+r",
