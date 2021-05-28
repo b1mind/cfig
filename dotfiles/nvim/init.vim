@@ -274,9 +274,10 @@ nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
 nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
 
 " Git version controls
-nnoremap <silent> gD <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
-"TODO some things to control git staging? can use vim commands?
-"TODO gpot for errors? gE? then <c-d><c-u>
+nnoremap <silent> gb <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
+
+"TODO some things to control git staging, can use vim commands?
+"TODO gpot for errors? gE? then <c-d><c-u> when conditional?
 
 noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
 noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>

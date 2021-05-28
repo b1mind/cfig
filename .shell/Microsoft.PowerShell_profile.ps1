@@ -32,13 +32,13 @@ Set-Alias -name v -value $nvim
 
 Set-Alias -name upT -value Get-Uptime
 
-$ws = "D:\websites\"
-Function wsPath {Set-Location -Path $ws}
-Set-Alias -name ws -value wsPath
+$fws = "D:\websites\"
+Function wsPath {Set-Location -Path $fws}
+Set-Alias -name fws -value wsPath
 
-$cf = "~\cfig\"
-Function configPath {Set-Location -Path $cf}
-Set-Alias -name cf -value configPath
+$fcf = "~\cfig\"
+Function configPath {Set-Location -Path $fcf}
+Set-Alias -name fcf -value configPath
 
 # $qmk = "C:\QMK_MSYS\conemu\ConEmu64.exe"
 # Function qmkTerminal {Set-Location -Path $qmk}

@@ -2,7 +2,6 @@
   //> Main bindings
 
   //< List vim like controls
-  //todo make list h more like arrows
   {
     "key": "j",
     "command": "list.focusDown",
@@ -33,7 +32,7 @@
   {
     "key": "/",
     "command": "list.toggleKeyboardNavigation",
-    "when": "filesExplorerFocus || !editorFocus && activeViewlet == 'workbench.view.extension.todo' "
+    "when": "!inputFocus && filesExplorerFocus || !editorFocus && activeViewlet == 'workbench.view.extension.todo' "
   },
 
   {
@@ -104,9 +103,9 @@
     "when": "refactorPreview.active"
   },
 
-  //note This is a catch all don't delete...
+  //note This is a catch all to get back into editor when odd focus don't delete...
   {
-    "key": "ctrl+k ctrl+k",
+    "key": "Ctrl+k Ctrl+k",
     "command": "workbench.action.navigateLast",
     "when": "!terminalFocus || !editorFocus"
   },
@@ -309,18 +308,18 @@
     "when": "dirtyDiffVisible"
   },
   {
-    "key": "shift+s",
+    "key": "ctrl+s",
     "command": "git.stageSelectedRanges",
     "when": "isInDiffEditor || dirtyDiffVisible"
   },
 
   {
-    "key": "shift+r",
+    "key": "ctrl+r",
     "command": "git.revertSelectedRanges",
     "when": "isInDiffEditor || dirtyDiffVisible"
   },
   {
-    "key": "shift+u",
+    "key": "ctrl+u",
     "command": "git.unstageSelectedRanges",
     "when": "isInDiffEditor"
   },
@@ -506,6 +505,7 @@
     "when": "neovim.mode == insert"
   },
 
+  //fixme figure out how to take args like c-r
   // {
   //   "command": "vscode-neovim.paste-register",
   //   "key": "ctrl+p",
@@ -532,7 +532,7 @@
     "command": "workbench.action.nextPanelView"
   }
 
-  //fixme make it find current word under cursor
+  //fixme make it find current word under cursor (highlight seperation issue?)
   // {
   //   "key": "ctrl+shift+r",
   //   "command": "workbench.action.findInFiles"
