@@ -479,11 +479,11 @@
 
   //> NeoVim only commands
   //? Keep this override for escaping peekwindows/ect.. There is a PR but not complete..
-  {
-    "command": "vscode-neovim.escape",
-    "key": "Escape",
-    "when": "!filesExplorerFocus && !dirtyDiffVisible && !inReferenceSearchEditor && !referenceSearchVisible && editorTextFocus && neovim.init && !markersNavigationVisible && !parameterHintsVisible"
-  },
+  // {
+  //   "command": "vscode-neovim.escape",
+  //   "key": "Escape",
+  //   "when": "!filesExplorerFocus && !dirtyDiffVisible && !inReferenceSearchEditor && !referenceSearchVisible && editorTextFocus && neovim.init && !markersNavigationVisible && !parameterHintsVisible"
+  // },
 
   {
     "key": ";",

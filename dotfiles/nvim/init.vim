@@ -28,7 +28,7 @@ if !exists('g:vscode')
 
   " % for html tags use https://www.vim.org/scripts/script.php?script_id=39
   filetype plugin on
-  " filetype off
+  filetype off
 
   set showcmd
   set noswapfile
@@ -216,7 +216,6 @@ vmap r gr
 nmap <silent> r :set opfunc=SpecialChange<CR>gr
 function! SpecialChange(type)
     silent exec 'gr' 
-
 endfunction
 
 " ctrl maps
@@ -231,6 +230,7 @@ nnoremap <leader>i ^
 vnoremap <leader>i $
 vnoremap <leader>a ^
 
+" FIXME does not account for indent this way
 nnoremap <leader>o o<Esc>O
 nnoremap <leader>. @@
 
@@ -262,73 +262,73 @@ nmap <leader>] f]i
 
 if exists('g:vscode') " start vs code only settings
 
-nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
-map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
 
-" FIXME buffer wont save in vsCode?
-nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
-nnoremap <silent> <leader><leader>r <Cmd>call VSCodeCall('workbench.action.openRecent')<CR>
+  " FIXME buffer wont save in vsCode?
+  nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
+  nnoremap <silent> <leader><leader>r <Cmd>call VSCodeCall('workbench.action.openRecent')<CR>
 
-" hit that gspot with vsc actions (todo make some work for neovim)
-nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
-nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
+  " hit that gspot with vsc actions (todo make some work for neovim)
+  nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
+  nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
 
-" Git version controls
-nnoremap <silent> gb <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
+  " Git version controls
+  nnoremap <silent> gb <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
 
-"TODO some things to control git staging, can use vim commands?
-"TODO gpot for errors? gE? then <c-d><c-u> when conditional?
+  "TODO some things to control git staging, can use vim commands?
+  "TODO gpot for errors? gE? then <c-d><c-u> when conditional?
 
-noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
-noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
+  noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
+  noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
 
-" For my bookmarks extension
-" TODO make a function for taking in the number (refactor dis shitz)
-noremap <silent> m1 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark1')<CR>
-noremap <silent> m2 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark2')<CR>
-noremap <silent> m3 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark3')<CR>
-noremap <silent> m4 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark4')<CR>
-noremap <silent> m5 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark5')<CR>
-noremap <silent> m6 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark6')<CR>
-noremap <silent> m7 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark7')<CR>
-noremap <silent> m8 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark8')<CR>
-noremap <silent> m9 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark9')<CR>
-noremap <silent> m0 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark0')<CR>
-noremap <silent> '1 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark1')<CR>
-noremap <silent> '2 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark2')<CR>
-noremap <silent> '3 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark3')<CR>
-noremap <silent> '4 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark4')<CR>
-noremap <silent> '5 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark5')<CR>
-noremap <silent> '6 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark6')<CR>
-noremap <silent> '7 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark7')<CR>
-noremap <silent> '8 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark8')<CR>
-noremap <silent> '9 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark9')<CR>
-noremap <silent> '0 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark0')<CR>
+  " For my bookmarks extension
+  " TODO make a function for taking in the number (refactor dis shitz)
+  noremap <silent> m1 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark1')<CR>
+  noremap <silent> m2 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark2')<CR>
+  noremap <silent> m3 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark3')<CR>
+  noremap <silent> m4 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark4')<CR>
+  noremap <silent> m5 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark5')<CR>
+  noremap <silent> m6 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark6')<CR>
+  noremap <silent> m7 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark7')<CR>
+  noremap <silent> m8 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark8')<CR>
+  noremap <silent> m9 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark9')<CR>
+  noremap <silent> m0 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark0')<CR>
+  noremap <silent> '1 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark1')<CR>
+  noremap <silent> '2 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark2')<CR>
+  noremap <silent> '3 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark3')<CR>
+  noremap <silent> '4 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark4')<CR>
+  noremap <silent> '5 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark5')<CR>
+  noremap <silent> '6 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark6')<CR>
+  noremap <silent> '7 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark7')<CR>
+  noremap <silent> '8 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark8')<CR>
+  noremap <silent> '9 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark9')<CR>
+  noremap <silent> '0 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark0')<CR>
 
-" Good example of cmd bind that extends
-nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+  " Good example of cmd bind that extends
+  nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 
-" Different settings in vsCode for scoping 
-highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
-highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
+  " Different settings in vsCode for scoping 
+  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
+  highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
 
-" Fix for comments?
-"FIXME use plugin for vim motions not working with vsCode comments
-xmap gc  <Plug>VSCodeCommentary
-nmap gc  <Plug>VSCodeCommentary
-omap gc  <Plug>VSCodeCommentary
-nmap gcc <Plug>VSCodeCommentaryLine
-vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
+  " Fix for comments?
+  "FIXME use plugin for vim motions not working with vsCode comments
+  xmap gc  <Plug>VSCodeCommentary
+  nmap gc  <Plug>VSCodeCommentary
+  omap gc  <Plug>VSCodeCommentary
+  nmap gcc <Plug>VSCodeCommentaryLine
+  vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
 
-"FIXME " Highlighting in vsCode/neoVCS/neovim are all different?
-vmap <silent> af <Cmd>call VSCodeCall('editor.action.smartSelect.grow')<CR>
-vmap <silent> aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
+  "FIXME " Highlighting in vsCode/neoVCS/neovim are all different?
+  vmap <silent> af <Cmd>call VSCodeCall('editor.action.smartSelect.grow')<CR>
+  vmap <silent> aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
 
-"BORKED
-"(Hacky attempt and having colored action bar but overwrites and esc not working)
-"nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
-"#nnoremap <silent> v <Cmd>call VSCodeCall('settings.cycle.statusBarVisual')<CR>v
-"#nnoremap <silent> ; <Cmd>call VSCodeCall('settings.cycle.statusBarEsc')<CR><Esc>
-"#nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+  "BORKED
+  "(Hacky attempt and having colored action bar but overwrites and esc not working)
+  "nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
+  "#nnoremap <silent> v <Cmd>call VSCodeCall('settings.cycle.statusBarVisual')<CR>v
+  "#nnoremap <silent> ; <Cmd>call VSCodeCall('settings.cycle.statusBarEsc')<CR><Esc>
+  "#nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 
 endif
