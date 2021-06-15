@@ -445,13 +445,13 @@
   },
 
   {
-    "command": "workbench.action.quickOpenSelectNext",
     "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
   },
   {
-    "command": "workbench.action.quickOpenSelectPrevious",
     "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
 
@@ -514,8 +514,8 @@
   // },
 
   {
-    "command": "-vscode-neovim.send",
-    "key": "ctrl+w"
+    "key": "ctrl+w",
+    "command": "-vscode-neovim.send"
   },
   {
     "key": "ctrl+o",
